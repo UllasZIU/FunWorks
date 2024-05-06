@@ -26,62 +26,47 @@ scissors="""
 ---.__(___)
 """
 import random as r
-u1=int(input("Hello there welcome to rock paper scissors .\nPlease enter number of Trial "))
-print(f'Please choose your move :\n1.Rock \n2.Paper \n3.Scissors ')
-def dec():
-    global comcount
-    global usercount
-    if user==com:
-        print(f"Drawwwww")
-    elif user==1:
-        if com==3  :
-            print(f"Congratulations, You win !!")
-            usercount+=1
-        elif com==2  :
-            print(f"Better Luck next time!!")
-            comcount+=1
-    elif user==2:
-        if com== 1 :
-            print(f"Congratulations, You win !!")
-            usercount+=1
-        elif com== 3 :
-            print(f"Better Luck next time!!")
-            comcount+=1
-    elif user==3 :
-        if com== 1 :
-            print(f"Congratulations, You win !!")
-            usercount+=1
-        elif com== 2 :
-            print(f"Better Luck next time!!")
-            comcount+=1
-comcount=0
+u1=int(input("Hello there welcome to rock paper scissors .\n0.Rock\n1.Paper\n2.Scissors .\nPlease enter number of Trial "))
+
 usercount=0
+cmpcount=0
+movelst=[rock,paper,scissors]
 for i in range(u1):
-    user=int(input("Enter your move 1 OR 2 OR 3 = "))
-    com=r.randint(1,3)
-    if user==1 or user==2 or user==3:
-            
-    #output 
-        if user==1:
-            print(f"You choose {rock}")
-        elif user==2:
-            print(f"You choose {paper}")
-        else:
-            print(f"You choose {scissors}")
-        if com==1:
-            print(f"Computer choosen {rock}")
-        elif com==2:
-            print(f"Computer choosen {paper}")
-        else:
-            print(f"Computer choosen {scissors}")
-    
-        dec()
-        
-    else :
-        print("You chose a invalid number . You LOOse")
-
-print("Hoorahhhh!! U win " if usercount>comcount else " Better luck next time" )
-
-
-
-
+    usermove=int(input("choose your move between 0, 1 or 2 :"))
+    print(f'Your move {movelst[usermove]}')
+    cmpmove=r.randint(0,2)
+    print(f'Computer move {movelst[cmpmove]}')
+    if usermove==cmpmove:
+        print("drawwwwww")
+    elif usermove not in [0,1 ,2]:
+        print("Invalid Input,, YOU lost the game !")
+        break
+    else:
+        if usermove==0:
+            if cmpmove==1:
+                print("Better Luck NEXT TIME ")
+                cmpcount+=1
+            elif cmpmove==2:
+                print('Congoooooooo ')
+                usercount+=1
+        elif usermove==1:
+            if cmpmove==2:
+                print("Better Luck NEXT TIME ")
+                cmpcount+=1
+            elif cmpmove==0:
+                print('Congoooooooo ')
+                usercount+=1    
+        elif usermove==2:
+            if cmpmove==0:
+                print("Better Luck NEXT TIME ")
+                cmpcount+=1
+            elif cmpmove==2:
+                print('Congoooooooo ')   
+                usercount+=1 
+    print(cmpcount, usercount)
+if usercount==cmpcount:
+    print("Match draw")
+elif usercount>cmpcount:
+    print("Hurreah,,,you won the game ")
+elif usercount<cmpcount:
+    print("YOU lost the game \nBetter Luck Next time")
