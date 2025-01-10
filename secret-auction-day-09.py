@@ -24,3 +24,4 @@ for i , j in dic.items():
 print(f"The winner is  {maxbidname} with a bid of {max} ")
 
 # import atuo clear terminal after every input check day 9 of 100 days of code
+# hi its me at 2025
